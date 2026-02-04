@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora Chat</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora"></div>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand__logo">◎</span>
+          <div>
+            <h1>Aurora Chat</h1>
+            <p>Gemini API • Budget-friendly mode</p>
+          </div>
+        </div>
+        <div class="auth-status" id="authStatus">
+          <span class="auth-status__label">Not signed in</span>
+          <button class="ghost" id="signOutBtn" disabled>Sign out</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="panel auth" id="authPanel">
+          <h2>Welcome back</h2>
+          <p>Create an account or sign in to sync chats to your spreadsheet.</p>
+          <div class="auth__forms">
+            <form id="signInForm">
+              <h3>Sign in</h3>
+              <label>
+                Email
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="password" required />
+              </label>
+              <button type="submit">Sign in</button>
+            </form>
+            <form id="signUpForm">
+              <h3>Sign up</h3>
+              <label>
+                Email
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="password" minlength="6" required />
+              </label>
+              <button type="submit">Create account</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="panel chat" id="chatPanel">
+          <div class="chat__header">
+            <div>
+              <h2>Chat with Aurora</h2>
+              <p>Ask anything. Messages are cached locally and ready for export.</p>
+            </div>
+            <div class="chat__actions">
+              <button class="ghost" id="exportBtn" disabled>Export chats (CSV)</button>
+              <button class="ghost" id="clearBtn" disabled>Clear chat</button>
+            </div>
+          </div>
+          <div class="chat__window" id="chatWindow"></div>
+          <form class="chat__composer" id="chatForm">
+            <div class="composer__field">
+              <label for="prompt">Message</label>
+              <textarea id="prompt" name="prompt" rows="3" placeholder="Send a message..." required></textarea>
+            </div>
+            <div class="composer__controls">
+              <label class="toggle">
+                <input type="checkbox" id="budgetMode" checked />
+                <span>Gemini budget mode</span>
+              </label>
+              <button type="submit" id="sendBtn" disabled>Send</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel features">
+          <h2>Features</h2>
+          <ul>
+            <li>Secure sign in, sign up, and sign out flow stored locally.</li>
+            <li>Aurora background with glassmorphism UI.</li>
+            <li>Budget-friendly Gemini response mode with concise replies.</li>
+            <li>Chat history saved per account with CSV export for spreadsheets.</li>
+            <li>Offline-ready demo with no server required.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <template id="messageTemplate">
+      <div class="message">
+        <div class="message__meta"></div>
+        <div class="message__body"></div>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
